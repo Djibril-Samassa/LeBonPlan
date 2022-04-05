@@ -1,0 +1,27 @@
+body{
+    margin: 2em;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.navbar>div{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar>div>li{
+    list-style: none;
+    text-decoration: none;
+    margin: 0px 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    width: 50%;
+}
