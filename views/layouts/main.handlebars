@@ -14,8 +14,18 @@
             <li><a href="/Lyon">Lyon</a></li>
         </div>
         <div>
-            <li><a href="/signup">S'inscrire</a></li>
-            <li><a href="/login">Se Connecter</a></li>
+            <li>{{#if isLoggedIn }}
+                <p class="username">{{username}}</p>
+                {{else}}
+                <a href="/signup">S'inscrire</a></li>
+                {{/if}}
+            <li>
+                {{#if isLoggedIn }}
+                <a href="/logout">Se Déconnecter</a>
+                {{else}}
+                <a href="/login">Se Connecter</a>
+                {{/if}}
+            </li>
         </div>
     </nav>
     {{{body}}}
