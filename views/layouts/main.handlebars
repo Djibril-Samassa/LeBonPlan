@@ -14,8 +14,9 @@
             <li><a href="/Lyon">Lyon</a></li>
         </div>
         <div>
-            <li>{{#if isLoggedIn }}
+            <li class="li-link">{{#if isLoggedIn }}
                 <p class="username">{{username}}</p>
+                <a href="/admin">Admin</a>
                 {{else}}
                 <a href="/signup">S'inscrire</a></li>
                 {{/if}}

@@ -29,3 +29,13 @@ form{
 .username{
     margin: 0px 10px;
 }
+
+.li-link{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+label{
+    margin-top: 10px;
+    margin-bottom: 2px;
+}

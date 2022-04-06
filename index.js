@@ -2,12 +2,14 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const path = require("path");
 const app = express();
+const fs = require("fs");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const secret = "em15bE6JqWCCimwd3H00MfHcyXZ2w18nR3XXPpsA";
 const User = require("./models/userModel");
 const cookieParser = require("cookie-parser");
+const Annonce = require("./models/annonceModel")
 let isLoggedIn = false;
 
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +30,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 
 app.get("/", (req,res) =>{
-    res.render("homepage",{isLoggedIn, username: user.username })
+    res.render("homepage",{isLoggedIn,})
 })
 
 app.get("/signup", (req,res) =>{
@@ -76,6 +78,27 @@ app.get("/profile", async (req, res) => {
 	}
     const user = await User.findOne({_id : token.id});
     res.render("profile",{isLoggedIn, username: user.username })
+})
+
+app.get("/admin", async (req,res) =>{
+    const token =  jwt.verify(req.cookies.jwt, secret);
+    if (!token) {
+		return res.redirect("/");
+	}
+    const user = await User.findOne({_id : token.id});
+    res.render("admin",{isLoggedIn, username: user.username })
+})
+
+app.post("/admin", async(req,res) =>{
+    // fs.renameSync(
+	// 	req.file.path,
+	// 	path.join(req.file.destination, req.file.originalname)
+	// );
+    // await Annonce.create({
+    //     title: req.body.title,
+    //     description: req.body.description,
+    //     image: req.body.image
+    // })
 })
 
 
